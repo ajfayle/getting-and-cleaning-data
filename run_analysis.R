@@ -34,10 +34,10 @@ x_filtered <- x_all[grepl('(mean|std)\\.\\.\\.', colnames(x_all))]
 all_data <- cbind(subject_all, activity_all, x_filtered)
 
 # Write data to file
-write.csv(all_data, file="questions_1_to_4.csv", row.names=FALSE)
+write.table(all_data, file="questions_1_to_4.txt", row.names=FALSE)
 
 # Melt data by subject and activity
 molten_data <- melt(all_data, id.vars = c('subject', 'activity'))
 average_data <- dcast(molten_data, subject + activity ~ variable, mean)
-write.csv(average_data, file="question_5.csv", row.names=FALSE)
+write.table(average_data, file="question_5.txt", row.names=FALSE)
 
